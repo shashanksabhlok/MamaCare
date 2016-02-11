@@ -1,0 +1,74 @@
+<template name="dashboard">
+  <div class="template-dashboard">
+    <div class="page-header">
+      <h1>My Mothers</h1>
+    </div>
+
+    <ul class="list-group">
+      {{#each mymothers}}
+        <li class="list-group-item"><a data-toggle="modal" data-target="#modal{{_id}}">{{ name }}</a> <span class="label label-default">{{city}}, {{country}}</span> <a id="{{_id}}" class="pull-right remove-mother"><i class="fa fa-remove"></i></a></li>
+
+
+        <div class="modal fade" id="modal{{_id}}" tabindex="-1" role="dialog" aria-labelledby="modal{{_id}}Label">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="modal{{_id}}Label">Edit Mother</h4>
+      </div>
+      <div class="modal-body">
+         <form class="update-mother-form">
+        <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{name}}" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label>phoneNumber</label>
+                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" value="{{phoneNumber}}" placeholder="phoneNumber">
+            </div>
+            <div class="form-group">
+                <label>address</label>
+                <input type="text" class="form-control" id="address" name="address" value="{{address}}" placeholder="address">
+            </div>
+
+            <div class="form-group">
+                <label>City</label>
+                <input type="text" class="form-control" id="city" name="city" value="{{city}}" placeholder="City">
+            </div>
+            <div class="form-group">
+                <label>Zip</label>
+                <input type="text" class="form-control" id="pobox" name="pobox" value="{{pobox}}" placeholder="pobox">
+            </div>
+            <div class="form-group">
+                <label>datevisit</label>
+                <div class="input-group datetimepicker">
+                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input class="set-due-date form-control" id="datevisit" name="datevisit" type="text" value="{{datevisit}}" />
+                  </div>
+            </div>
+            <div class="form-group">
+                <label>numWeeksPreggo</label>
+                <input type="text" class="form-control" id="numWeeksPreggo" name="numWeeksPreggo" value="{{numWeeksPreggo}}" placeholder="numWeeksPreggo">
+            </div>
+            <div class="form-group">
+                <label>familyPhoneNumber</label>
+                <input type="text" class="form-control" id="familyPhoneNumber" name="familyPhoneNumber" value="{{familyPhoneNumber}}" placeholder="familyPhoneNumber">
+            </div>
+
+
+            <input type="hidden" name="id" id="id" value="{{_id}}">
+             <button type="submit" class="btn btn-primary">Update Mother</button>
+             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+      {{else}}
+        <p>You have not added any mothers</p>
+      {{/each}}
+    </ul>
+
+  </div>
+</template>
